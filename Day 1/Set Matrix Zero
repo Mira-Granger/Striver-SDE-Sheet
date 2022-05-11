@@ -1,0 +1,52 @@
+Links : https://takeuforward.org/data-structure/set-matrix-zero/
+        https://leetcode.com/problems/set-matrix-zeroes/
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        // set<int> zero_rows;
+        // set<int> zero_cols;
+        // int r=matrix.size();
+        // int c=matrix[0].size();
+        // for(int i=0;i<r;i++){
+        //     for(int j=0;j<c;j++){
+        //         if(matrix[i][j]==0){
+        //             zero_rows.insert(i);
+        //             zero_cols.insert(j);
+        //         }
+        //     }
+        // }
+        // set<int, greater<int> >::iterator itr;
+        // for(itr=zero_rows.begin();itr!=zero_rows.end(); itr++){
+        //     int row=*itr;
+        //     for(int i=0;i<c;i++){
+        //         matrix[row][i]=0;
+        //     }
+        // }
+        // for(itr=zero_cols.begin();itr!=zero_cols.end(); itr++){
+        //     int col=*itr;
+        //     for(int i=0;i<r;i++){
+        //         matrix[i][col]=0;
+        //     }
+        // }
+        //
+        int r=matrix.size();
+        int c=matrix[0].size();
+        vector<int> dummy_row(r,-1);
+        vector<int> dummy_col(c,-1);
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                if(matrix[i][j]==0){
+                    dummy_row[i]=0;
+                    dummy_col[j]=0;
+                }
+            }
+        }
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                if(dummy_row[i]==0 || dummy_col[j]==0){
+                    matrix[i][j]=0;
+                }
+            }
+        }
+    }
+};
